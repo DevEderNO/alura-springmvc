@@ -15,12 +15,16 @@
 <body>
     <header>
         <nav class="navbar navbar-light navbar-expand-md">
-            <div class="container-fluid"><a class="navbar-brand" href="/casadocodigo">Home</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse"
-                    id="navcol-1">
+            <div class="container-fluid"><a class="navbar-brand" href="/casadocodigo">Home</a>
+                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navcol-1">
                     <ul class="nav navbar-nav">
                         <li class="nav-item" role="presentation"><a class="nav-link active" href="${s:mvcUrl('PC#listar').build() }">Listagem</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="${s:mvcUrl('PC#form').build() }">Cadastro</a></li>
+                    	<li class="nav-item" role="presentation"><a class="nav-link" href="carrinho">Seu Carrinho (${carrinhoCompras.quantidade })</a></li>
                     </ul>
                 </div>
             </div>

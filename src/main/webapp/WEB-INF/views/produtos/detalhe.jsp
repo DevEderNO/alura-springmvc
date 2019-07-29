@@ -12,55 +12,56 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
-<body class="h-100 w-100">
-    <header id="layout-header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 justify-content-center">
-            <div class="collapse navbar-collapse container" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="http://www.casadocodigo.com.br">Home</a></li>
-                </ul>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/collections/livros-de-front-end">Front End</a></li>
-                </ul>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/collections/livros-de-games">Games</a></li>
-                </ul>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/collections/livros-de-java">Java</a></li>
-                </ul>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/collections/livros-de-mobile">Mobile</a></li>
-                </ul>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/collections/livros-desenvolvimento-web">Web</a></li>
-                </ul>
+<body>
+    <header>
+        <nav class="navbar navbar-light navbar-expand-md">
+            <div class="container-fluid"><a class="navbar-brand" href="/casadocodigo">Home</a>
+                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item" role="presentation"><a class="nav-link active"
+                                href="${s:mvcUrl('PC#listar').build() }">Listagem</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link"
+                                href="${s:mvcUrl('PC#form').build() }">Cadastro</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="carrinho">Seu Carrinho
+                                (${carrinhoCompras.quantidade })</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
     <section class="container">
-        <div id="${produto.id }" class="mb-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145" class="img-fluid" />
+        <div id="${produto.id }" class="mb-3 card border-0">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img class="card-img img-fluid" src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145" />
                 </div>
                 <div class="col-md-8">
-                    <h1 class="product-title">${produto.titulo }</h1>
-                    <p class="book-description">${produto.descricao }</p>
-		        	<form action="/carrinho/add" method="post">
-			            <input type="hidden" value="${produto.id }" name="produtoId" />
-		            	<c:forEach items="${produto.precos }" var="preco">
-				            <div class="rows">
-		                        <div class="card">
-			                        <div class="card-body ">
-			                            <label class="col-sm-6">${preco.tipo } - R$ ${preco.valor }</label>
-			                            <label class="col-sm-auto"></label>
-			                            <button type="submit" class="btn btn-primary btn-lg" title="Compre Agora!">Compre Agora</button>
+                    <div class="card-body">
+					    <h2 class="card-title">${produto.titulo }</h2>
+					    <p class="card-text">${produto.descricao }</p>
+			        	<form action="<c:url value="/carrinho/add" />" method="post">
+				            <input type="hidden" value="${produto.id }" name="produtoId" />
+			            	<c:forEach items="${produto.precos }" var="preco">
+					            <div class="rows mb-1">
+			                        <div class="card border-0">
+				                        <div class="card-body row ">
+				                        	<div class="col-sm-3">
+				                        		<input type="radio" name="tipoPreco" id="tipoPreco" value="${preco.tipo }" checked>
+					                            <label><h4>${preco.tipo }</h4></label>
+				                        	</div>
+				                            <label class="col-sm-5"><h4>R$ ${preco.valor }</h4></label>
+				                            <button type="submit" class="btn btn-primary btn-block col-sm-3" title="Compre Agora!">Compre Agora</button>
+				                        </div>
+	
 			                        </div>
-
-		                        </div>
-				            </div>
-		           		</c:forEach>
-			        </form>
+					            </div>
+			           		</c:forEach>
+				        </form>
+					</div>
                 </div>
             </div>
         </div>
