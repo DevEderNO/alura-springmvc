@@ -42,6 +42,14 @@
 	            </button>
 	        </div>
 	    </c:if>
+	    <c:if test="${erro != null}">
+	        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+	            <a>${erro}</a> 
+	            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	                <span aria-hidden="true">&times;</span>
+	            </button>
+	        </div>
+	    </c:if>
         <div class="container">
             <div class="table-bordered text-center">
                 <table class="table table-striped table-bordered">

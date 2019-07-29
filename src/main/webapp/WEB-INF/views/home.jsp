@@ -36,7 +36,20 @@
                 <h2 class="text-center">Casa do Código</h2>
                 <p class="text-center"><br>Com um conteudo diversificado e que vai direto ao ponto, a Casa do Código edita e desenvolve livros de alta qualidade, escritos por autores com experiência nos assuntos.<br><br></p>
             </div>
-            <div class="buttons"></div>
+        </div>
+        <div class="container">
+	        <div class="row justify-content-around">
+	       		<c:forEach items="${produtos }" var="produto">
+	        			<div class="card m-1 col-md-4 p-0" style="max-width: 18rem;">
+						  <img src="https://cdn.shopify.com/s/files/1/0155/7645/products/testes-de-software-featured_large.png?v=1429091541" 
+						  	   alt="${produto.titulo }" class="img img-fluid">
+						  <div class="card-body">
+						    <h5 class="card-title">${produto.titulo }</h5>
+						    <a href="${s:mvcUrl('PC#detalhe').arg(0,produto.id).build() }" class="btn btn-primary">Comprar</a>
+						  </div>
+						</div>
+	       		</c:forEach>
+	        </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
