@@ -46,15 +46,15 @@
 			        	<form action="<c:url value="/carrinho/add" />" method="post">
 				            <input type="hidden" value="${produto.id }" name="produtoId" />
 			            	<c:forEach items="${produto.precos }" var="preco">
-					            <div class="rows mb-1">
-			                        <div class="card border-0">
+					            <div class="rows">
+			                        <div class="card ">
 				                        <div class="card-body row ">
-				                        	<div class="col-sm-3">
-				                        		<input type="radio" name="tipoPreco" id="tipoPreco" value="${preco.tipo }" checked>
-					                            <label><h4>${preco.tipo }</h4></label>
+				                        	<div class="col-md-3 p-0">
+				                        		<input class="radio" type="radio" name="tipoPreco" id="tipoPreco" value="${preco.tipo }" checked>
+					                            <label> ${preco.tipo }</label>
 				                        	</div>
-				                            <label class="col-sm-5"><h4>R$ ${preco.valor }</h4></label>
-				                            <button type="submit" class="btn btn-primary btn-block col-sm-3" title="Compre Agora!">Compre Agora</button>
+				                            <label class="col-md-6 container">R$ ${preco.valor }</label>
+				                            <button type="submit" class="btn btn-primary btn-block col-md-3 p-0 m-0" title="Compre Agora!">Compre Agora</button>
 				                        </div>
 	
 			                        </div>
@@ -68,11 +68,6 @@
         
         
         <div>
-            <section class="summary">
-	            <h3>E muito mais...
-	            	<a href='/pages/sumario-java8'>veja o sumário</a>
-	            </h3>
-            </section>
             <section class="data product-detail">
                 <h2 class="section-title">Dados do livro:</h2>
                 <p>Número de páginas:
