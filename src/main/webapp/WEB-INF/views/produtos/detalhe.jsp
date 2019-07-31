@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html>
 <html class="w-100">
 
@@ -13,26 +15,10 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-light navbar-expand-md">
-            <div class="container-fluid"><a class="navbar-brand" href="/casadocodigo">Home</a>
-                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navcol-1">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item" role="presentation"><a class="nav-link active"
-                                href="${s:mvcUrl('PC#listar').build() }">Listagem</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link"
-                                href="${s:mvcUrl('PC#form').build() }">Cadastro</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="carrinho">Seu Carrinho
-                                (${carrinhoCompras.quantidade })</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    
+    <!-- Header -->
+    <%@ include file="/WEB-INF/views/header.jsp" %>
+    
     <section class="container">
         <div id="${produto.id }" class="mb-3 card border-0">
             <div class="row no-gutters">
@@ -43,14 +29,14 @@
                     <div class="card-body">
 					    <h2 class="card-title">${produto.titulo }</h2>
 					    <p class="card-text">${produto.descricao }</p>
-			        	<form action="<c:url value="/carrinho/add" />" method="post">
+			        	<form:form method="post" servletRelativeAction="/carrinho/add">
 				            <input type="hidden" value="${produto.id }" name="produtoId" />
 			            	<c:forEach items="${produto.precos }" var="preco">
 					            <div class="rows">
 			                        <div class="card ">
 				                        <div class="card-body row ">
 				                        	<div class="col-md-3 p-0">
-				                        		<input class="radio" type="radio" name="tipoPreco" id="tipoPreco" value="${preco.tipo }" checked>
+				                        		<input type="radio" class="radio" name="tipoPreco" id="tipoPreco" value="${preco.tipo }" checked/>
 					                            <label> ${preco.tipo }</label>
 				                        	</div>
 				                            <label class="col-md-6 container">R$ ${preco.valor }</label>
@@ -59,8 +45,9 @@
 	
 			                        </div>
 					            </div>
+					            <%-- <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token} }" /> --%>
 			           		</c:forEach>
-				        </form>
+				        </form:form>
 					</div>
                 </div>
             </div>

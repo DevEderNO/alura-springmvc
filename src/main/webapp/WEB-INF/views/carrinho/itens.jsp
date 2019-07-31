@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -13,30 +13,11 @@
 	<title>Seu carrinho de compras - Casa do Código</title>
 </head>
 <body>
-	<header>
-		<nav class="navbar navbar-light navbar-expand-md">
-			<div class="container-fluid"><a class="navbar-brand" href="/casadocodigo">Home</a>
-				<button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse justify-content-end" id="navcol-1">
-					<ul class="nav navbar-nav">
-						<li class="nav-item" role="presentation"><a class="nav-link active"
-								href="${s:mvcUrl('PC#listar').build() }">Listagem</a></li>
-						<li class="nav-item" role="presentation"><a class="nav-link"
-								href="${s:mvcUrl('PC#form').build() }">Cadastro</a></li>
-						<li class="nav-item" role="presentation"><a class="nav-link" href="carrinho">Seu Carrinho
-								(${carrinhoCompras.quantidade })</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
-
+	
+    <!-- Header -->
+    <%@ include file="/WEB-INF/views/header.jsp" %>
 
 	<main>
-	
 		<section class="infoSection container">
 			<h2 class="infoSection-titulo">Seu carrinho</h2>
 			
@@ -66,11 +47,11 @@
 								</td>
 								<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal" title="PreÃ§o unitÃ¡rio: R$59,90">${carrinhoCompras.getTotal(item) }</td>
 								<td>
-									<form action="${s:mvcUrl('CCC#remover').arg(0,item.produto.id).arg(1,item.tipoPreco).build() }" method="post">
+									<form:form action="${s:mvcUrl('CCC#remover').arg(0,item.produto.id).arg(1,item.tipoPreco).build() }" method="post">
 										<input 	type="image"
 												class="img"  
 												src="http:////cdn.shopify.com/s/files/1/0155/7645/t/232/assets/trash.png?104" alt="X" title="Remover">
-									</form>
+									</form:form>
 								</td>
 							</tr>
 						</c:forEach>
@@ -79,9 +60,9 @@
 					<tfoot class="formularioDoCarrinho-rodape">
 						<tr>
 							<td class="formularioDoCarrinho-rodape-item formularioDoCarrinho-finalizar" colspan="4">
-								<form action="${s:mvcUrl('PC#finalizar').build() }" method="post">
+								<form:form action="${s:mvcUrl('PC#finalizar').build() }" method="post">
 									<input class="btn btn-primary" type="submit" value="Finalizar Compra"></input>
-								</form>
+								</form:form>
 							</td>
 							<td class="formularioDoCarrinho-rodape-item">
 								${carrinhoCompras.total }
