@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Graduate&display=swap');
+
+main {
+	margin-top: 20px;
+}
+
+.imageFundoLogin{
+	background-image: url("../../resources/img/star-sky.jpg");
+	height: 100%;
+	background-position: right bottom;
+}
+
+.font-graduate {
+	font-family: 'Graduate', cursive;
+}

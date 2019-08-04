@@ -1,24 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
-<!DOCTYPE html>
-<html>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Livros de Java, Android, iPhone, Ruby, PHP e muito mais - Casa do Código</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-    
-    <!-- Header -->
-    <%@ include file="/WEB-INF/views/header.jsp" %>
-    
-    <div class="container" style="max-width: 480px">
+<tags:pageTemplate titulo="Casa do Código">
+    <main class="container" style="max-width: 480px">
         <form:form method="post" action="${s:mvcUrl('PC#gravar').build()}" enctype="multipart/form-data" commandName="produto">
-            <h2 class="text-center">Cadastro de Livros</h2>
+            <h2 class="text-center font-graduate">Cadastro de Livros</h2>
             <div class="form-group">
             	<label for="titulo">Título</label>
             	<form:input class="form-control" placeholder="Título" path="titulo"></form:input>
@@ -53,12 +42,8 @@
                 </div>
             </div>
             <div class="form-group d-md-flex justify-content-md-center">
-            	<button class="btn btn-primary" type="submit">Cadastrar</button>
+            	<button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
             </div>
         </form:form>
-    </div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+    </main>
+</tags:pageTemplate>
