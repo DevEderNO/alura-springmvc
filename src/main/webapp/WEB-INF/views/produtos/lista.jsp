@@ -31,6 +31,7 @@
 	                        <th>Título</th>
 	                        <th>Descrição</th>
 	                        <th>Páginas</th>
+	                        <th>Preços</th>
 	                        <th>Ações</th>
 	                    </tr>
 	                </thead>
@@ -40,6 +41,7 @@
 		                        <td>${produto.titulo}</td>
 		                        <td>${produto.descricao}</td>
 		                        <td align="center">${produto.paginas}</td>
+		                        <td align="center">${produto.precos}</td>
 		                        <td align="center">
 			                        <a class="btn btn-primary" href="${s:mvcUrl('PC#detalhe').arg(0, produto.id).build() }">Detalhes</a> 
 			                    </td>
